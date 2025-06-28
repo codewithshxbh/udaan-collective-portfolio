@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 20 94% 53%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 90% 58%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 25 90% 60%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 20 94% 53%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 20 94% 53%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 90% 58%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 25 90% 60%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 20 94% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(to bottom right, #fff6f0, #fffaf5);
+    min-height: 100vh;
+    color: #000 !important; /* Force black text color */
+  }
+  
+  /* Force black text for all text elements */
+  p, h1, h2, h3, h4, h5, h6, span, a, li, div {
+    color: #000 !important;
+  }
+  
+  /* Exception for footer - allow white text */
+  footer p, footer h1, footer h2, footer h3, footer h4, footer h5, footer h6, 
+  footer span, footer a, footer li, footer div {
+    color: #fff !important;
+  }
+  
+  /* Exception for hero sections - allow white text in headings */
+  section[class*="relative"] > div[class*="container"] h1, 
+  section[class*="py-20"] > div[class*="container"] h1, 
+  section[class*="py-24"] > div[class*="container"] h1,
+  section[class*="overflow-hidden"] > div[class*="container"] h1 {
+    color: #fff !important;
+  }
+  
+  /* Preserve white text for buttons with gradient background */
+  .gradient-bg p, .gradient-bg span, .gradient-bg a {
+    color: #fff !important;
+  }
+  
+  /* Style for quotes/blockquotes */
+  blockquote {
+    position: relative;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 165, 0, 0.1);
+    border-left: 4px solid;
+    border-image: linear-gradient(to bottom, hsl(20, 94%, 53%), hsl(30, 90%, 58%)) 1;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.1);
+    border-radius: 0.5rem;
+  }
+  
+  blockquote::before {
+    content: """;
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 4rem;
+    line-height: 1;
+    background: linear-gradient(to right, hsl(20, 94%, 53%), hsl(30, 90%, 58%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    opacity: 0.6;
+  }
+  
+  blockquote::after {
+    content: """;
+    position: absolute;
+    bottom: -2rem;
+    right: 0.5rem;
+    font-size: 4rem;
+    line-height: 1;
+    background: linear-gradient(to right, hsl(20, 94%, 53%), hsl(30, 90%, 58%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+    opacity: 0.6;
+  }
+
+  /* Hide the main navbar when on admin pages */
+  body.admin-page header:first-of-type {
+    display: none !important;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  border-radius: 0.75rem;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, hsl(20, 94%, 53%), hsl(30, 90%, 58%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+.gradient-bg {
+  background: linear-gradient(to right, hsl(20, 94%, 53%), hsl(30, 90%, 58%));
+}
+
+.gradient-bg-light {
+  background: linear-gradient(to right, rgba(255, 140, 0, 0.1), rgba(255, 165, 0, 0.1));
+}
+
+/* Hero heading - white text override */
+.hero-heading {
+  color: white !important;
+}
+
+html body .hero-heading {
+  color: white !important;
+}
+
+body h1.hero-heading {
+  color: white !important;
+}
+
+/* Hero subheading - white text override */
+.hero-subheading {
+  color: white !important;
+}
+
+html body .hero-subheading {
+  color: white !important;
+}
+
+body p.hero-subheading {
+  color: white !important;
+}
+
+/* Admin page styling - hide only the generic site navbar */
+body.admin-page header:not(.admin-specific-header) {
+  display: none !important;
+}
+
+/* Make sure admin panel's own navbar stays visible */
+body.admin-page header.admin-specific-header {
+  display: block !important;
+}
+
+/* Orange overlay for hero image */
+.orange-overlay {
+  position: relative;
+}
+
+.orange-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 102, 0, 0.7);
+  z-index: 1;
+}
+
+.orange-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
